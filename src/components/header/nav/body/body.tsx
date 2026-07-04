@@ -1,0 +1,91 @@
+import { motion } from "framer-motion";
+import Link from "next/link";
+import styles from "./style.module.scss";
+import { blur, translate } from "../../anim";
+import { Link as LinkType } from "@/types";
+import { cn } from "@/lib/utils";
+import { useParams, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+interface SelectedLink {
+  isActive: boolean;
+  index: number;
+}
+
+interface BodyProps {
+  links: LinkType[];
+  selectedLink: SelectedLink;
+  setSelectedLink: (selectedLink: SelectedLink) => void;
+  setIsActive: (isActive: boolean) => void;
+}
+
+export default function Body({
+  links,
+  selectedLink,
+  setSelectedLink,
+  setIsActive,
+}: BodyProps) {
+  const params = useParams();
+  const pathname = usePathname();
+  const [currentHref, setCurrentHref] = useState("/");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const { hash } = window.location;
+    setCurrentHref(pathname + hash);
+  }, [params, pathname]);
+
+  const getChars = (word: string) =>
+    word.split("").map((char, i) => (
+      <motion.span
+        className="pointer-events-none"
+        custom={[i * 0.02, (word.length - i) * 0.01]}
+        variants={translate}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        key={`${char}-${i}`}
+      >
+        {char}
+      </motion.span>
+    ));
+
+  return (
+    <div className={cn(styles.body, "flex flex-col md:flex-row items-end gap-4")}>
+      {links.map((link, index) => {
+        const { title, href, target } = link;
+        const isActive = currentHref === href;
+
+        return (
+          <Link
+            key={`nav-link-${index}`}
+            href={href}
+            target={target}
+            className="group transition-colors"
+            aria-current={isActive ? "page" : undefined}
+          >
+            <motion.p
+              className={cn(
+                "text-lg font-medium px-2 py-1 rounded-lg transition-all duration-300",
+                isActive
+                  ? "text-foreground underline underline-offset-4"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              onClick={() => setIsActive(false)}
+              onMouseOver={() => setSelectedLink({ isActive: true, index })}
+              onMouseLeave={() => setSelectedLink({ isActive: false, index })}
+              variants={blur}
+              animate={
+                selectedLink.isActive && selectedLink.index !== index
+                  ? "open"
+                  : "closed"
+              }
+            >
+              {getChars(title)}
+            </motion.p>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
