@@ -29,7 +29,7 @@ const CONTACT_CHANNELS = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+254 53 274 728",
+    value: "+254753274728",
     href: "https://wa.me/25453274728?text=Hi%20Kelvins!%20I%20have%20a%20project%20in%20mind%20and%20my%20budget%20is...",
   },
 ];
