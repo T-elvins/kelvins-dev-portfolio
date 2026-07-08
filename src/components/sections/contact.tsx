@@ -23,14 +23,14 @@ const CONTACT_CHANNELS = [
   {
     icon: Phone,
     label: "Call",
-    value: "+254 789 341 086",
-    href: "tel:+254789341086",
+    value: "+254 762108117",
+    href: "tel:+254762108117",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+254753274728",
-    href: "https://wa.me/25453274728?text=Hi%20Kelvins!%20I%20have%20a%20project%20in%20mind%20and%20my%20budget%20is...",
+    value: "+254762108117",
+    href: "https://wa.me/254762108117?text=Hi%20Kelvins!%20I%20have%20a%20project%20in%20mind%20and%20my%20budget%20is...",
   },
 ];
 
