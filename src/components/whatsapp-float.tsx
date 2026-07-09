@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
-const WHATSAPP_NUMBER = "254762108117";
+const WHATSAPP_NUMBER = "254748446765";
 const PREFILLED_MESSAGE =
   "Hi Kelvins! 👋 I have a project in mind. My budget is around... and I'd love to build...";
 
