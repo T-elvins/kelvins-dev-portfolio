@@ -49,14 +49,14 @@ const CONTACT_LINKS = [
   },
   {
     name: "Phone call",
-    content: "+254716865003",
-    href: "tel:+254716865003",
+    content: "+254748446765",
+    href: "tel:+254748446765",
     icon: <FaPhone height="50px" />,
   },
   {
     name: "WhatsApp",
-    content: "+254716865003",
-    href: "tel:+254716865003",
+    content: "+254748446765",
+    href: "tel:+254748446765",
     icon: <FaPhone height="50px" />,
   },
 ];
